@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Pig Dice Game</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <h1>Sikanoppapeli</h1>
+
+
+    <h2>Pelin ohjeet</h2>
+    <p><strong>Pelin tavoite</strong>: Voittaja on se joka saa ekana 100 pistettä</p>
+    <p><strong>Pelin Säännöt</strong>:</p>
+    <ul>
+        <li><strong>Heittäminen</strong>: Lisää pisteet edelliseen lukuun, mutta jos heität ykkösen menetät kaikki pisteet.</li>
+        <li><strong>Lopeta vuoro</strong>: Lopettaa pelin ja ne luvut, jotka sait lisätään pelin pisteisiin.</li>
+    </ul>
+
+    <!-- Players Area -->
+    <div class="players-row">
+        <!-- Player 1 -->
+        <div class="player-area">
+            <div id="p1-header" class="active">
+                Player 1 - Total Points: <span id="p1-points">0</span>
+            </div>
+            <hr>
+            <div>
+                <p>Turn Points: <span id="p1-turn-points">0</span></p>
+                <p><img id="p1-roll-img" src="images/dice3.png"></p>
+                <p><button id="p1-roll">Heitä</button> <button id="p1-hold">Lopeta vuoro</button></p>
+            </div>
+        </div>
+        
+        <!-- Player 2  -->
+        <div class="player-area">
+            <div id="p2-header">
+                Player 2 - Total Points: <span id="p2-points">0</span>
+            </div>
+            <hr>
+            <div>
+                <p>Turn Points: <span id="p2-turn-points">0</span></p>
+                <p><img id="p2-roll-img" src="images/dice5.png"></p>
+                <p><button id="p2-roll" disabled>Heitä</button> <button id="p2-hold" disabled>Lopeta vuoro</button></p>
+            </div>
+        </div>    
+    </div>
+
+    <!-- Load JavaScript -->
+    <script src="sikanoppapeli.js"></script>
+    <script src="main.js"></script>
+</body>
