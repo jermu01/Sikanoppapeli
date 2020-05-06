@@ -1,33 +1,33 @@
 let player1 = {
-    totalpts: 0,
-    turnpts: 0
+    totalPts: 0,
+    turnPts: 0
     ,id: "p1"
+
 }
 
 let player2 = {
-    totalpts: 0,
-    turnpts: 0
+    totalPts: 0,
+    turnPts: 0
     ,id: "p2"
 }
 
 
 document.getElementById("p1-roll").addEventListener("click", function() {playerRoll(player1);});
-document.getElementById("p1-hold").addEventListener("click", function() {playerRoll(player1);});
+document.getElementById("p1-hold").addEventListener("click", function() {playerHold(player1);});
 document.getElementById("p2-roll").addEventListener("click", function() {playerRoll(player2);});
 document.getElementById("p2-hold").addEventListener("click", function() {playerHold(player2);});
 
 
 function playerRoll(aPlayer) {
-    let rollnum = Math.randomInt(1, 7)
-    document.getElementById(aPlayer.id + "-roll-img").src = "images/dice" + rollnum + ".png";
+    let rollNum = Math.randomInt(1, 7)
+    document.getElementById(aPlayer.id + "-roll-img").src = "images/dice" + rollNum + ".png";
 
-    if (rollnum != 1) {
-
-        aPlayer.turnpts += rollnum;
-        document.getElementById(aPlayer.id + "-turn-points").innerHTML = aPlayer.turnpts;
+    if (rollNum != 1) {
+        aPlayer.turnPts += rollNum;
+        document.getElementById(aPlayer.id + "-turn-points").innerHTML = aPlayer.turnPts;
     } else {
-        aPlayer.turnpts = 0;
-        document.getElementById(aPlayer.id + "-turn-points").innerHTML = player1.turnpts;
+        aPlayer.turnPts = 0;
+        document.getElementById(aPlayer.id + "-turn-points").innerHTML = aPlayer.turnPts;
 
         if (aPlayer.id == "p1") {
             switchturn("p1", "p2");
@@ -38,17 +38,18 @@ function playerRoll(aPlayer) {
     }
 }
 
-function playerhold(aPlayer) {
-    aPlayer.totalpts += aPlayer.turnpts;
-    document.getElementById(aPlayer.id + "-points").innerHTML = aPlayer.totalpts;
+function playerHold(aPlayer) {
+    aPlayer.totalPts += aPlayer.turnPts;
+    document.getElementById(aPlayer.id + "-points").innerHTML = aPlayer.totalPts;
 
-    if (aPlayer.totalpts >= 100) {
-        alert(aPlayer.id + " voittaja!!")
+    if (aPlayer.totalPts >= 100) {
+        alert(" voittaja!!")
         document.location.reload();
+        document.getElementById(aPlayer.id + "-turn-points").innerHTML = aPlayer.totalPts;
 
     } else {
     // reset
-    aPlayer.turnpts = 0;
+    aPlayer.turnPts = 0;
     document.getElementById(aPlayer.id + "-turn-points").innerHTML = 0;
 
 
@@ -63,10 +64,10 @@ function playerhold(aPlayer) {
 }
 
 function switchturn(id1, id2) {
-        document.getElementById(id1 + "-header").classList.remove("activate");
-        document.getElementById(id2 + "-header").classList.add("activate");
+        document.getElementById(id1 + "-header").classList.remove("active");
+        document.getElementById(id2 + "-header").classList.add("active");
         document.getElementById(id1 + "-roll").disabled = true;
-        document.getElementById(id1 + "-roll").disabled = true;
+        document.getElementById(id1 + "-hold").disabled = true;
         document.getElementById(id2 + "-roll").disabled = false;
-        document.getElementById(id2 + "-roll").disabled = false;
+        document.getElementById(id2 + "-hold").disabled = false;
 }
